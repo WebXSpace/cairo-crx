@@ -1,0 +1,6 @@
+[submodule "webxui-vue3"]
+	path = webxui-vue3
+	url = https://github.com/WebXSpace/webxui-vue3.git
+[submodule "packages/webxui-vue3"]
+	path = packages/webxui-vue3
+	url = https://github.com/WebXSpace/webxui-vue3.git
