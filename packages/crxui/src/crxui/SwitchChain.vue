@@ -90,7 +90,7 @@ export default defineComponent({
 				});
 
 				if (chain) {
-					chain.chainName = chain.chain;
+					chain.chainName = chain.name;
 					chain.blockExplorerUrls = chain.explorers?.map(it => {
 						return it.url;
 					});

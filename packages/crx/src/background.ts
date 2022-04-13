@@ -286,16 +286,42 @@ class WalletProvider {
 		const chains = new Array<string>();
 
 		for (let key in values) {
-			if (key.startsWith('chain_')) {
+			if (key.startsWith('current_chain_') || key.startsWith('chain_')) {
 				chains.push(key);
 			}
 		}
 
 		await chrome.storage.sync.remove(chains);
+
+		this._contexts.forEach(it => {
+			it.chain = undefined;
+			it.index = 0;
+			it.provider = undefined; // close provider
+		});
 	}
 
 	private async _removeChain(id: string) {
-		await chrome.storage.sync.remove(`chain_${parseInt(id)}`);
+		const values = await chrome.storage.sync.get(undefined);
+
+		const chains = new Array<string>(`chain_${parseInt(id)}`);
+
+		for (let key in values) {
+			if (key.startsWith('current_chain_') || key.startsWith('chain_')) {
+				if (parseInt(values[key].chainId) == parseInt(id)) {
+					chains.push(key);
+				}
+			}
+		}
+
+		await chrome.storage.sync.remove(chains);
+
+		this._contexts.forEach(it => {
+			if (it.chain?.chainId && parseInt(it.chain.chainId) == parseInt(id)) {
+				it.chain = undefined;
+				it.index = 0;
+				it.provider = undefined; // close provider
+			}
+		});
 	}
 
 	private async _apiKeys(): Promise<any> {

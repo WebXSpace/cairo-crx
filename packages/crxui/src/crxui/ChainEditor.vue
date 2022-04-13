@@ -64,7 +64,9 @@ export default defineComponent({
 		const name = computed({
 			get: () => {
 				console.log(parameter.value);
-				return parameter.value.chainName ?? parameter.value.chain ?? '';
+				return (
+					parameter.value.chainName ?? parameter.value.name ?? parameter.value.chain ?? ''
+				);
 			},
 			set: (value: string) => {
 				const newValue = { ...parameter.value };

@@ -13,7 +13,7 @@
 			class="icon"
 			:border="false"
 			v-if="showingDelete"
-			@click="onDelete"
+			@click.stop="onDelete"
 		></icon-button>
 	</div>
 </template>
