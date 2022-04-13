@@ -1,0 +1,40 @@
+{
+	"manifest_version": 3,
+	"name": "Cario",
+	"version": "1.0.0",
+	"description": "Cario dapper extension",
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["inject.js"],
+			"all_frames": true,
+			"run_at": "document_start"
+		}
+	],
+	"permissions": [
+		"tabs",
+		"action",
+		"activeTab",
+		"background",
+		"webRequest",
+		"storage",
+		"notifications"
+	],
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	},
+	"options_page": "popup/index.html",
+	"web_accessible_resources": [
+		{
+			"matches": ["<all_urls>"],
+			"resources": ["etherum.js"]
+		}
+	],
+	"action": {
+		"default_title": "WalletProxy extension"
+	},
+	"externally_connectable": {
+		"matches": ["http://127.0.0.1:4000/*"]
+	}
+}
