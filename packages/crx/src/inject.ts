@@ -7,15 +7,27 @@ function injectScript(filepath: string) {
 
 injectScript(chrome.runtime.getURL('etherum.js'));
 
-const port = chrome.runtime.connect();
+let port: chrome.runtime.Port | undefined;
 
-port.onMessage.addListener(request => {
-	console.log('inject receive', request);
-	window.postMessage({
-		type: 'content_script',
-		params: request,
+function _connectPort() {
+	if (port) {
+		return;
+	}
+
+	port = chrome.runtime.connect();
+
+	port.onMessage.addListener(request => {
+		console.log('inject receive', request);
+		window.postMessage({
+			type: 'content_script',
+			params: request,
+		});
 	});
-});
+
+	port.onDisconnect.addListener(() => {
+		port = undefined;
+	});
+}
 
 window.addEventListener('message', event => {
 	if (event.source != window) {
@@ -25,6 +37,8 @@ window.addEventListener('message', event => {
 	if (event.data.type != 'inject_script') {
 		return;
 	}
+
+	_connectPort();
 
 	chrome.runtime.sendMessage(event.data.params, resp => {
 		console.log(event.data.params, 'resp', resp);
