@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Cario",
 	"version": "1.0.0",
-	"description": "Cario dapper extension",
+	"description": "Web3/Crypto wallet extension",
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
@@ -11,6 +11,7 @@
 			"run_at": "document_start"
 		}
 	],
+	"icons": { "128": "assets/icon.png" },
 	"permissions": [
 		"tabs",
 		"action",
@@ -24,7 +25,6 @@
 		"service_worker": "background.js",
 		"type": "module"
 	},
-	"options_page": "popup/index.html",
 	"web_accessible_resources": [
 		{
 			"matches": ["<all_urls>"],
@@ -32,7 +32,7 @@
 		}
 	],
 	"action": {
-		"default_title": "WalletProxy extension"
+		"default_title": "Web3/Crypto wallet extension"
 	},
 	"externally_connectable": {
 		"matches": ["http://127.0.0.1:4000/*"]

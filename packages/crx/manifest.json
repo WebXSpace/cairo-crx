@@ -1,6 +1,6 @@
 {
 	"manifest_version": 3,
-	"name": "Web3 wallet",
+	"name": "Cairo",
 	"version": "0.0.1",
 	"description": "Web3/Crypto wallet extension",
 	"content_scripts": [
@@ -25,7 +25,6 @@
 		"service_worker": "background.js",
 		"type": "module"
 	},
-	"options_page": "popup/index.html",
 	"web_accessible_resources": [
 		{
 			"matches": ["<all_urls>"],
@@ -33,6 +32,6 @@
 		}
 	],
 	"action": {
-		"default_title": "Web3 wallet extension"
+		"default_title": "Web3/Crypto wallet extension"
 	}
 }
