@@ -12,15 +12,7 @@
 		}
 	],
 	"icons": { "128": "assets/icon.png" },
-	"permissions": [
-		"tabs",
-		"action",
-		"activeTab",
-		"background",
-		"webRequest",
-		"storage",
-		"notifications"
-	],
+	"permissions": ["tabs", "activeTab", "background", "webRequest", "storage", "notifications"],
 	"background": {
 		"service_worker": "background.js",
 		"type": "module"
