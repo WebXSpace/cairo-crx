@@ -1,13 +1,13 @@
 <template>
-	<page title="WALLET CONNECTING">
-		<a class="sub-title">{{ 'Scan QR code with a WalletConnect compatible wallet' }}</a>
+	<page :title="t('WALLET CONNECTING')">
+		<a class="sub-title">{{ t('Scan QR code with a WalletConnect compatible wallet') }}</a>
 		<div class="qrcode-border">
 			<div class="loading" v-if="loading">{{ 'Loading ...' }}</div>
 			<qrcode :value="uri" :size="qrCodeSize" class="qrcode-img" v-else></qrcode>
 		</div>
 		<wx-button
 			:loading="loading"
-			text="REFRESH"
+			:text="t('REFRESH')"
 			class="refresh"
 			color="var(--webx-background)"
 			background="var(--webx-accent)"
@@ -24,6 +24,7 @@ import { computed } from '@vue/reactivity';
 import { useWalletProxy } from './chrome';
 import Page from './Page.vue';
 import router from '../router';
+import { t } from '@webxspace/webxui';
 
 export default defineComponent({
 	components: { Qrcode, wxButton, Page },
@@ -62,6 +63,7 @@ export default defineComponent({
 		});
 
 		return {
+			t,
 			loading,
 			refresh,
 			subTitleWidth,

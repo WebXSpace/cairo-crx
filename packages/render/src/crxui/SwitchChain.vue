@@ -1,11 +1,11 @@
 <template>
-	<page title="SWITCH CHAIN" class="switch-chain">
+	<page :title="t('SWITCH CHAIN')" class="switch-chain">
 		<div class="loading" v-if="loading">
-			<loading size="1.5em"></loading> <a class="loading-tip"> {{ 'Loading data ...' }}</a>
+			<loading size="1.5em"></loading> <a class="loading-tip"> {{ t('Loading data ...') }}</a>
 		</div>
 
 		<wx-form v-if="!loading">
-			<wx-linker :href="loadFrom" class="info" text="Auto fill warning"> </wx-linker>
+			<wx-linker :href="loadFrom" class="info" :text="t('Auto fill warning')"> </wx-linker>
 			<chain-editor v-model:parameter="chainParameter"></chain-editor>
 		</wx-form>
 
@@ -15,7 +15,7 @@
 
 		<wx-button
 			class="button"
-			text="CONFIRM"
+			:text="t('CONFIRM')"
 			background="var(--webx-danger)"
 			color="var(--webx-background)"
 			@click="confirm"
@@ -42,6 +42,8 @@ import {
 	Link as wxLinker,
 	wxForm,
 } from '@webxspace/webxui';
+
+import { t } from '@webxspace/webxui';
 
 export default defineComponent({
 	components: {
@@ -173,6 +175,7 @@ export default defineComponent({
 		};
 
 		return {
+			t,
 			loadFrom,
 			loading,
 			errorMessage,

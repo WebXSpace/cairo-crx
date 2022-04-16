@@ -66,6 +66,8 @@ export default defineComponent({
 	background-color: var(--webx-secondary-background);
 	height: calc(100% - 4 * var(--webx-padding-size));
 	border-radius: var(--webx-border-radius);
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .linker {

@@ -5,19 +5,19 @@
 				<icon-button name="more" class="tool-bar-button"></icon-button>
 				<template #menus>
 					<menu-item
-						name="OPTIONS"
+						:name="t('OPTIONS')"
 						icon="settings"
 						@click="options"
 						v-if="showingOptions"
 					></menu-item>
 					<menu-item
-						name="DISCONNECT"
+						:name="t('DISCONNECT')"
 						icon="disconnect"
 						@click="disconnect"
 						v-if="account"
 					></menu-item>
 					<menu-item
-						name="CONNECT"
+						:name="t('CONNECT')"
 						icon="qrcode"
 						@click="connect"
 						v-if="showingConnect"
@@ -45,6 +45,7 @@ import { IconButton, PopMenu, MenuItem, CopyText, ToolTip } from '@webxspace/web
 import { useWalletProxy } from './chrome';
 import { computed } from '@vue/reactivity';
 import { useRouter } from 'vue-router';
+import { t } from '@webxspace/webxui';
 
 export default defineComponent({
 	components: {
@@ -144,6 +145,7 @@ export default defineComponent({
 		};
 
 		return {
+			t,
 			options,
 			showingOptions,
 			showingConnect,

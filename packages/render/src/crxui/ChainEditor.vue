@@ -1,27 +1,27 @@
 <template>
-	<form-field name="CHAIN ID" class="field">
+	<form-field :name="t('CHAIN ID')" class="field">
 		<form-input v-model:text="id" type="number" placeholder="REQUIRED"></form-input>
 	</form-field>
-	<form-field name="CHAIN NAME" class="field">
+	<form-field :name="t('CHAIN NAME')" class="field">
 		<form-input v-model:text="name" placeholder="REQUIRED"></form-input>
 	</form-field>
-	<form-field name="NATIVE CURRENCY NAME" class="field">
+	<form-field :name="t('NATIVE CURRENCY NAME')" class="field">
 		<form-input v-model:text="nativeTokenName" placeholder="REQUIRED"></form-input>
 	</form-field>
-	<form-field name="NATIVE CURRENCY SYMBOL" class="field">
+	<form-field :name="t('NATIVE CURRENCY SYMBOL')" class="field">
 		<form-input v-model:text="nativeTokenSymbol" placeholder="REQUIRED"></form-input>
 	</form-field>
-	<form-field name="NATIVE CURRENCY DECIMALS" class="field">
+	<form-field :name="t('NATIVE CURRENCY DECIMALS')" class="field">
 		<form-input
 			v-model:text="nativeTokenDecimals"
 			placeholder="REQUIRED"
 			type="number"
 		></form-input>
 	</form-field>
-	<form-field name="RPC URLs" class="field">
+	<form-field :name="t('RPC URLs')" class="field">
 		<form-text-area v-model:text="rpcURLs" placeholder="REQUIRED"></form-text-area>
 	</form-field>
-	<form-field name="BLOCK EXPLORER URLs" class="field">
+	<form-field :name="t('BLOCK EXPLORER URLs')" class="field">
 		<form-text-area v-model:text="blockExplorerURLs"></form-text-area>
 	</form-field>
 </template>
@@ -31,7 +31,7 @@ import { defineComponent, PropType, ref, toRefs } from 'vue';
 import { AddEthereumChainParameter } from './chrome';
 import { FormField, FormInput, FormTextArea } from '@webxspace/webxui';
 import { computed } from '@vue/reactivity';
-
+import { t } from '@webxspace/webxui';
 export default defineComponent({
 	components: {
 		FormField,
@@ -131,6 +131,7 @@ export default defineComponent({
 		});
 
 		return {
+			t,
 			id,
 			name,
 			nativeTokenName,

@@ -29,4 +29,5 @@ export default {
 	'API keys value': '值',
 	'wallet connect bridge server': '查看文档',
 	'add chain via chainlist.org': '通过网站 chainlist.org 添加',
+	'Clear all': '清除所有',
 };

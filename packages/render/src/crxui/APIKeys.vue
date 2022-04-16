@@ -3,18 +3,18 @@
 		<div class="input-line">
 			<form-input
 				class="input-item"
-				:placeholder="'API keys name'"
+				:placeholder="t('API keys name')"
 				v-model:text="name"
 			></form-input>
 			<a class="split">&nbsp;-&nbsp;</a>
 			<form-input
 				class="input-item"
-				:placeholder="'API keys value'"
+				:placeholder="t('API keys value')"
 				v-model:text="value"
 			></form-input>
 
 			<wx-button
-				text="ADD"
+				:text="t('ADD')"
 				class="button"
 				color="var(--webx-background)"
 				background="var(--webx-danger)"
@@ -34,11 +34,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, ref, computed } from 'vue';
 import { FormInput, wxButton } from '@webxspace/webxui';
 import apiKeyItem from './APIKeyItem.vue';
 import { useWalletProxy } from './chrome';
-import { computed } from '@vue/reactivity';
+import { t } from '@webxspace/webxui';
+
 export default defineComponent({
 	components: {
 		FormInput,
@@ -98,6 +99,7 @@ export default defineComponent({
 		};
 
 		return {
+			t,
 			isValid,
 			onAdd,
 			onDelete,

@@ -1,29 +1,29 @@
 <template>
-	<page title="ADD ETHEREUM CHAIN">
+	<page :title="t('ADD ETHEREUM CHAIN')">
 		<wx-form>
-			<form-field name="CHAIN ID" class="field">
+			<form-field :name="t('CHAIN ID')" class="field">
 				<a class="form-text"> {{ args.chainId }} </a>
 			</form-field>
-			<form-field name="CHAIN NAME" class="field">
+			<form-field :name="t('CHAIN NAME')" class="field">
 				<a class="form-text"> {{ args.chainName }} </a>
 			</form-field>
-			<form-field name="NATIVE CURRENCY" class="field" v-if="args.nativeCurrency">
+			<form-field :name="t('NATIVE CURRENCY')" class="field" v-if="args.nativeCurrency">
 				<a class="form-text">
 					{{ args.nativeCurrency.name }}({{ args.nativeCurrency.symbol }}) -
 					{{ args.nativeCurrency.decimals }}
 				</a>
 			</form-field>
-			<form-field name="RPC URLs" class="field">
+			<form-field :name="t('RPC URLs')" class="field">
 				<RPCs :rpcs="args.rpcUrls"></RPCs>
 			</form-field>
-			<form-field name="BLOCK EXPLORER URLs" class="field">
+			<form-field :name="t('BLOCK EXPLORER URLs')" class="field">
 				<RPCs :rpcs="args.blockExplorerUrls"></RPCs>
 			</form-field>
 		</wx-form>
 
 		<wx-button
 			:loading="loading"
-			text="ADD"
+			:text="t('ADD')"
 			class="add"
 			color="var(--webx-background)"
 			background="var(--webx-danger)"
@@ -39,6 +39,7 @@ import { AddEthereumChainParameter, useWalletProxy, gobackOrClose } from './chro
 import { FormField, FormOption, wxButton, ToolTip, wxForm } from '@webxspace/webxui';
 import Page from './Page.vue';
 import RPCs from './RPCs.vue';
+import { t } from '@webxspace/webxui';
 
 export default defineComponent({
 	components: {
@@ -80,6 +81,7 @@ export default defineComponent({
 		};
 
 		return {
+			t,
 			add,
 			loading,
 			args,

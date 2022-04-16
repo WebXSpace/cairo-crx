@@ -1,11 +1,15 @@
 <template>
 	<div class="chains">
 		<div class="tool-bar">
-			<search-bar class="searchbar" v-model:text="searchText" placeholder="Name / ID ...">
+			<search-bar
+				class="searchbar"
+				v-model:text="searchText"
+				:placeholder="t('Name / ID ...')"
+			>
 			</search-bar>
 			<wx-button
 				class="button"
-				text="Clear all"
+				:text="t('Clear all')"
 				color="var(--webx-background)"
 				background="var(--webx-danger)"
 				@click="clearAll"
@@ -32,6 +36,7 @@ import { AddEthereumChainParameter, useWalletProxy } from './chrome';
 import RPCs from './RPCs.vue';
 import ChainItem from './ChainItem.vue';
 import { useRouter } from 'vue-router';
+import { t } from '@webxspace/webxui';
 
 export default defineComponent({
 	components: {
@@ -91,6 +96,7 @@ export default defineComponent({
 		};
 
 		return {
+			t,
 			onDelete,
 			clearAll,
 			selected,

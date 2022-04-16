@@ -1,11 +1,11 @@
 <template>
 	<div class="bridge-url">
 		<wx-form>
-			<form-field name="OFFICAL URL">
+			<form-field :name="t('OFFICAL URL')">
 				<wx-switch v-model:on="officalURL" class="switch"></wx-switch>
 			</form-field>
 
-			<form-field name="CUSTOM URL" v-if="!officalURL">
+			<form-field :name="t('CUSTOM URL')" v-if="!officalURL">
 				<form-input class="url" v-model:text="text"></form-input>
 				<template #footer>
 					<a class="error" v-if="validorError">{{ validorError }}</a>
@@ -14,7 +14,7 @@
 		</wx-form>
 
 		<wx-button
-			text="CONFIRM"
+			:text="t('CONFIRM')"
 			class="button"
 			@click="confirm"
 			background="var(--webx-danger)"
@@ -30,6 +30,7 @@ import { FormInput, FormField, wxButton, wxSwitch, wxForm } from '@webxspace/web
 
 import { useWalletProxy } from './chrome';
 import { computed } from '@vue/reactivity';
+import { t } from '@webxspace/webxui';
 
 const offical = 'https://bridge.walletconnect.org';
 
@@ -95,6 +96,7 @@ export default defineComponent({
 		});
 
 		return {
+			t,
 			commitable,
 			validorError,
 			confirm,

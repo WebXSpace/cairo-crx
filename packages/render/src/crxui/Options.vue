@@ -1,14 +1,14 @@
 <template>
-	<page class="options" title="OPTIONS">
+	<page class="options" :title="t('OPTIONS')">
 		<wx-form>
-			<form-field name="BRIDGE URL" class="field">
+			<form-field :name="t('BRIDGE URL')" class="field">
 				<icon-button name="more2" class="icon" @click="showingContent = 'BridgeURL'">
 				</icon-button>
 				<template #footer>
 					<wx-linker
 						class="footer"
 						href="https://docs.walletconnect.com/bridge-server"
-						text="wallet connect bridge server"
+						:text="t('wallet connect bridge server')"
 					>
 						<template #header>
 							<icon name="question" class="footer-icon"></icon>
@@ -16,11 +16,11 @@
 					</wx-linker>
 				</template>
 			</form-field>
-			<form-field name="API KEYs" class="field">
+			<form-field :name="t('API KEYs')" class="field">
 				<icon-button name="more2" class="icon" @click="showingContent = 'APIKeys'">
 				</icon-button>
 			</form-field>
-			<form-field name="CHAINS" class="field">
+			<form-field :name="t('CHAINS')" class="field">
 				<icon-button name="more2" class="icon" @click="showingContent = 'Chains'">
 				</icon-button>
 
@@ -28,7 +28,7 @@
 					<wx-linker
 						class="footer"
 						:href="chainList"
-						text="add chain via chainlist.org"
+						:text="t('add chain via chainlist.org')"
 						@navigate="onNavigateToChainList"
 					>
 					</wx-linker>
@@ -68,6 +68,7 @@ import Page from './Page.vue';
 import BridgeURL from './BridgeURL.vue';
 import Chains from './Chains.vue';
 import APIKeys from './APIKeys.vue';
+import { t } from '@webxspace/webxui';
 
 export default defineComponent({
 	components: {
@@ -143,11 +144,11 @@ export default defineComponent({
 		});
 
 		const onNavigateToChainList = () => {
-			console.log('==================');
 			window.close();
 		};
 
 		return {
+			t,
 			chainList,
 			onNavigateToChainList,
 			showingContent,
