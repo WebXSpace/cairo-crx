@@ -5,7 +5,7 @@
 	"types": "./dist/index.d.ts",
 	"scripts": {
 		"dev": "ts-node ./scripts/dev.ts",
-		"build": "cross-env NODE_ENV=production rollup -c && crx3 -p ../../../sign/dist.pem  -z web3.zip dist"
+		"build": "ts-node ./scripts/build.ts"
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^21.0.3",
