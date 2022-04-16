@@ -3,9 +3,8 @@
   "workspaces": {
     "packages": [
       "packages/webxui-vue3",
-      "packages/crxui",
-      "packages/crx",
-      "packages/*"
+      "packages/render",
+      "packages/crx"
     ],
     "nohoist": []
   },
