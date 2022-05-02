@@ -171,6 +171,10 @@ class EIP1193Provider {
 		listeners?.delete(listener);
 	}
 
+	removeAllListeners() {
+		this._events.clear();
+	}
+
 	public prependListener(eventName: EventType, listener: Listener) {
 		console.log('prependListener');
 	}
@@ -195,6 +199,7 @@ interface IEthereum {
 	prependOnceListener?: (eventName: EventType, listener: Listener) => this;
 	on: (eventName: EventType, listener: Listener) => this;
 	removeListener: (eventName: EventType, listener: Listener) => this;
+	removeAllListeners: () => this;
 	isMetaMask?: boolean;
 	_metamask?: any;
 	_maxListeners: number;
@@ -241,6 +246,10 @@ function useEthereum(isMetaMask: boolean): IEthereum {
 		},
 		removeListener: (eventName: EventType, listener: Listener) => {
 			provider.removeListener(eventName, listener);
+			return etherum;
+		},
+		removeAllListeners: () => {
+			provider.removeAllListeners();
 			return etherum;
 		},
 		isMetaMask: isMetaMask,
